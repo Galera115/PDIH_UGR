@@ -56,7 +56,15 @@ Se comprueba que los valores están dentro de la ventana y si esto no es así se
 
 Cuando finalice el bucle se llamará a endwin() y finalizará el programa.
 
+![image](img/pelotita_py.png)
+![image](img/pelotita2_py.png)
+
 
 ### Adición del menú
 
 Podemos partir de pelotita y añadirle un menú donde se impriman por pantalla las instrucciones y se muestre una suerte de pantalla de bienvenida a los jugadores antes de comenzar. Esto se implementará en src/pelotita_menu.py
+
+Para ello creamos cuatro strings, uno con un mensaje de bienvenida, otros dos con las instrucciones para cada jugador y uno final donde se nos dice que en cuanto pulsemos una de las teclas el juego comenzará. Aunque ahora mismo solo nos mostrará la pelotita.
+
+![image](img/pelotita_menu_py.png)
+![image](img/pelotita_menu2_py.png)
