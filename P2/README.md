@@ -68,3 +68,60 @@ Para ello creamos cuatro strings, uno con un mensaje de bienvenida, otros dos co
 
 ![image](img/pelotita_menu_py.png)
 ![image](img/pelotita_menu2_py.png)
+
+### Adición de los jugadores
+
+Esto en Python es sumamente sencillo:
+
+```
+for i in range(barra_len):
+            stdscr.addch(barra2_y + i, barra2_x, '|', curses.color_pair(1))
+            stdscr.addch(barra1_y + i, barra1_x, '|', curses.color_pair(2))
+```
+
+Básicamente dibujamos en una posición x para cada jugador y luego dibujamos N veces el carácter para reflejar el tamaño de la pala del jugador, se han elegido dos colores distintos para representarlos a cada jugador.
+
+### Marcador
+
+Crearemos un string para informar de los goles de cada jugador a lo largo del partido para conseguir darles información. Aparte de esto para que quede más estético se ha añadido una línea media entre ambas zonas (de forma similar a como se crean los jugadores de cada equipo) y un recuadro para señalar la zona de juego, ahora mismo esto quedaría así:
+
+[!image](img/pelotita_menu.png)
+
+Se puede ver todo lo comentado anteriormente, el marcador, las líneas que delimitan el campo y a los jugadores cada uno de distinto color.
+
+Una vez tenemos la mayoría de cosméticos implementados comencemos con las mecánicas principales del juego.
+### Controles
+
+Ahora mismo el juego es algo primitivo, vemos una pelota que va recorriendo el mapa y rebotando sin hacer abosulatemente nada. 
+
+Para controlar nuestros jugadores tendremos que leer la tecla pulsada y dependiendo de que tecla se pulse cambiar la coordenada y de una pala u la otra hacia arriba o hacia abajo, estos movimientos. 
+
+Aparte se han añadido dos teclas la P para entrar en modo pausa y la tecla Q para salir del juego antes de su final.
+
+![image](img/pausa.png)
+
+### Detección de rebotes y puntos
+
+Nuestra pelotita en estos momentos solamente rebota con los bordes de la terminal y atraviesa las palas, no queremos eso, desactivaremos la detección de los bordes izquierdo y derecho, para poder contabilizar cuando se realiza un punto pero en la coordenada x podrá cambiar su dirección siempre que su coordenada coincida con la x de la pala y con el rango formado por el comienzo de su coordenada y, y la coordenada y más la longitud de la barra. Si ambas condiciones se cumplen la dirección de la pelota en el eje x cambiará.
+
+Cuando la pelota se encuentre en la coordenada 0 o max_x se detectará que ha habido un gol con lo que pausaremos el juego y notificaremos a ambos jugadores de ello.
+
+![image](img/punto.png)
+
+### Cambiando la condición de parada
+
+Se podría tratar de tener un sistema parecido al del ping pong o del tenis con ventajas y tie-breaks en caso de empate entre los jugadores, pero en mi caso se ha simplificado la regla y el primero en llegar a 5 será el que gane.
+
+Por ello en el momento que los puntos de uno de los jugadores llegue a 5 la partida finalizará.
+
+![image](img/victoria.png)
+
+### Últimos toques
+
+Tratando de añadir algo de aleatoriedad se ha definido el saque de forma aleatoria de esta forma nunca se sabrá si se produce hacia izquierda, derecha, arriba o abajo.
+
+Se han retocado algo los mensajes para tratar de que queden algo más centrados.
+
+Se ha cambiado la pantalla final afuera del bucle para que en caso de que se pulse la tecla q antes de finalizar la partida notifique de quién ha sido la victoria o de si ha ocurrido un empate. Una vez aparezca el mensaje final y se pulse una tecla el juego se cerrará.
+
+![image](img/empate.png)
