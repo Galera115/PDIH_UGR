@@ -3,7 +3,7 @@ from curses import wrapper
 import random
 import time
 
-def pelotita(stdscr):
+def pong(stdscr):
     DELAY = 30000
 
     
@@ -14,9 +14,9 @@ def pelotita(stdscr):
     curses.init_pair(2, curses.COLOR_RED, curses.COLOR_BLACK)
     curses.init_pair(3, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
-    welcome = "Bienvenido a Pong"
-    str_jug1 = "El jugador de la izquierda juega con W(arriba) y S(abajo)"
-    str_jug2 = "El jugador de la derecha con las flechas arriba y abajo del teclado"
+    welcome = "Bienvenido a Pong, puede pausar con la tecla P"
+    str_jug1 = "El jugador de la izquierda(1) juega con W(arriba) y S(abajo)"
+    str_jug2 = "El jugador de la derecha(2) con las flechas arriba y abajo del teclado"
     str_play = "Pulse cualquier tecla para comenzar"
 
 
@@ -47,7 +47,7 @@ def pelotita(stdscr):
 
     curses.curs_set(False)
 
-    comienzo_y = int(max_y/2)-2
+    comienzo_y = int(max_y/2)-3
     comienzo_x = int(max_x/2)
 
     barra1_y = 2
@@ -55,11 +55,12 @@ def pelotita(stdscr):
 
     barra2_y = 2
     barra2_x = max_x - 2
+    gol = False
 
-    #stdscr.addstr(comienzo_y, comienzo_x, welcome, curses.color_pair(1))
-    #stdscr.addstr(comienzo_y+1, comienzo_x-20, str_jug1, curses.color_pair(1))
-    #stdscr.addstr(comienzo_y+2, comienzo_x-20, str_jug2, curses.color_pair(1))
-    #stdscr.addstr(comienzo_y+3, comienzo_x-10, str_play, curses.color_pair(1))
+    stdscr.addstr(comienzo_y,   comienzo_x - len(welcome) // 2, welcome, curses.color_pair(1))
+    stdscr.addstr(comienzo_y+1, comienzo_x - len(str_jug1) // 2, str_jug1, curses.color_pair(1))
+    stdscr.addstr(comienzo_y+2, comienzo_x - len(str_jug2) // 2, str_jug2, curses.color_pair(1))
+    stdscr.addstr(comienzo_y+3, comienzo_x - len(str_play) // 2, str_play, curses.color_pair(1))
     stdscr.refresh()
     while True:
         q = stdscr.getch()
@@ -67,7 +68,7 @@ def pelotita(stdscr):
             break
     mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
     
-    while True:
+    while puntos_1 < 5 and puntos_2 < 5:
         
         if x == 0:
             puntos_2 += 1
@@ -75,6 +76,7 @@ def pelotita(stdscr):
             y = max_y // 2
             direction_x = random.choice([-direction_x, direction_x])
             direction_y = random.choice([-direction_y, direction_y])
+            gol = True
             mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
             continue
         elif x == max_x-1:
@@ -83,6 +85,7 @@ def pelotita(stdscr):
             y = max_y // 2
             direction_x = random.choice([-direction_x, direction_x])
             direction_y = random.choice([-direction_y, direction_y])
+            gol = True
             mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
             continue
 
@@ -114,7 +117,15 @@ def pelotita(stdscr):
             barra1_y += 1
         elif (key == ord('w') or key == ord('W')) and barra1_y > 0:
             barra1_y -= 1
-
+        elif (key == ord('p') or key == ord('P')):
+            while True:
+                q = stdscr.getch()
+                if (q == ord('p') or q == ord('P')):
+                    q = None
+                    break
+                pausa = "PAUSA, PULSE P PARA CONTINUAR"
+                stdscr.addstr(max_y // 2, max_x // 2 - len(pausa) // 2, pausa, curses.color_pair(1))
+        
         x += direction_x
         y += direction_y  
 
@@ -124,19 +135,44 @@ def pelotita(stdscr):
         time.sleep(0.1)
 
         
-        stdscr.clear()      
+        stdscr.clear()     
+        stdscr.border() 
         stdscr.addch(y,x,"o")
+        for i in range(1,max_y-1):
+            stdscr.addch(i, max_x // 2, '|')
         for i in range(barra_len):
             stdscr.addch(barra2_y + i, barra2_x, '|', curses.color_pair(1))
-            stdscr.addch(barra1_y + i, barra1_x, 'X', curses.color_pair(2))
-        stdscr.addstr(1, 0, mensaje, curses.color_pair(3))
+            stdscr.addch(barra1_y + i, barra1_x, '|', curses.color_pair(2))
+        stdscr.addstr(1, max_x // 2 - len(mensaje) // 2, mensaje, curses.color_pair(3))
+        if gol:
+            while True:
+                gol = False
+                pausa = "PUNTO, PULSE P PARA HACER EL SAQUE"
+                stdscr.addstr(max_y // 2, max_x // 2 - len(pausa) // 2, pausa, curses.color_pair(1))
+                q = stdscr.getch()
+                if (q == ord('p') or q == ord('P')):
+                    q = None
+                    break
 
         stdscr.refresh()
 
+        
+    if puntos_2 > puntos_1:
+        mensaje_f = "JUGADOR 2 HAS GANADO {} - {}".format(puntos_1, puntos_2)
+    elif puntos_1 > puntos_2:
+        mensaje_f = "JUGADOR 1 HAS GANADO {} - {}".format(puntos_1, puntos_2)
+    else:
+        mensaje_f = "EMPATE {} - {}".format(puntos_1, puntos_2)
+    while True:
+        stdscr.addstr(max_y // 2, max_x // 2 - len(mensaje_f) // 2, mensaje_f, curses.color_pair(1))
+        q = stdscr.getch()
+        if q > -1:
+            break
+            
     curses.endwin()
 
 def main():
-    curses.wrapper(pelotita)
+    curses.wrapper(pong)
 
 if __name__ == "__main__":
     main()
