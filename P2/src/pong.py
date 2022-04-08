@@ -1,12 +1,12 @@
 import curses
 from curses import wrapper
+import random
 import time
 
 def pelotita(stdscr):
     DELAY = 30000
 
-    x = 10
-    y = 10
+    
 
     stdscr.keypad(True)
 
@@ -23,17 +23,27 @@ def pelotita(stdscr):
     stdscr.nodelay(True)
 
     max_y, max_x = stdscr.getmaxyx()
+
+    x = max_x // 2
+    y = max_y // 2
+
+    puntos_1 = 0
+    puntos_2 = 0
+
     k = 0
     next_x = 0
     direction_x = 1
     direction_y = 1
+
+    direction_x = random.choice([-direction_x, direction_x])
+    direction_y = random.choice([-direction_y, direction_y])
 
     curses.initscr()
     curses.noecho()
 
     stdscr.border()
 
-    barra_len = max_y // 4
+    barra_len = max_y // 3
 
     curses.curs_set(False)
 
@@ -46,51 +56,82 @@ def pelotita(stdscr):
     barra2_y = 2
     barra2_x = max_x - 2
 
-    stdscr.addstr(comienzo_y, comienzo_x, welcome, curses.color_pair(1))
-    stdscr.addstr(comienzo_y+1, comienzo_x-20, str_jug1, curses.color_pair(1))
-    stdscr.addstr(comienzo_y+2, comienzo_x-20, str_jug2, curses.color_pair(1))
-    stdscr.addstr(comienzo_y+3, comienzo_x-10, str_play, curses.color_pair(1))
+    #stdscr.addstr(comienzo_y, comienzo_x, welcome, curses.color_pair(1))
+    #stdscr.addstr(comienzo_y+1, comienzo_x-20, str_jug1, curses.color_pair(1))
+    #stdscr.addstr(comienzo_y+2, comienzo_x-20, str_jug2, curses.color_pair(1))
+    #stdscr.addstr(comienzo_y+3, comienzo_x-10, str_play, curses.color_pair(1))
     stdscr.refresh()
     while True:
         q = stdscr.getch()
         if q > -1:
             break
-
+    mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
+    
     while True:
-        stdscr.clear()      
         
+        if x == 0:
+            puntos_2 += 1
+            x = max_x // 2
+            y = max_y // 2
+            direction_x = random.choice([-direction_x, direction_x])
+            direction_y = random.choice([-direction_y, direction_y])
+            mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
+            continue
+        elif x == max_x-1:
+            puntos_1 +=1
+            x = max_x // 2
+            y = max_y // 2
+            direction_x = random.choice([-direction_x, direction_x])
+            direction_y = random.choice([-direction_y, direction_y])
+            mensaje = "Jugador 1 = {} |||| Jugador 2= {}".format(puntos_1, puntos_2)
+            continue
+
+
+        if y in (max_y - len("o"), 0): 
+            direction_y = -direction_y # reverse
+        # left and right
+        if x in (max_x - len("o"), 0): #or ( (x == barra2_x) and (y in (barra2_y+barra_len, barra2_y)) or ((x-1 == barra2_x) and ( y in (barra1_y+barra_len,barra1_y)))): 
+            direction_x = -direction_x # reverse
+        
+        if x == barra1_x and direction_x == -1:
+            if y in range(barra1_y, barra1_y+barra_len):
+                direction_x = -direction_x
+
+            
+        elif x == barra2_x and direction_x == 1:
+            if y in range(barra2_y, barra2_y+barra_len):
+                direction_x = -direction_x
+
+
+        key = stdscr.getch()
+        if key == ord('q') or key == ord('Q'):
+            break
+        elif key == curses.KEY_DOWN and barra2_y < max_y - barra_len:
+            barra2_y += 1
+        elif key == curses.KEY_UP and barra2_y > 0:
+            barra2_y -= 1
+        elif (key == ord('s') or key == ord('S')) and barra1_y < max_y - barra_len:
+            barra1_y += 1
+        elif (key == ord('w') or key == ord('W')) and barra1_y > 0:
+            barra1_y -= 1
+
         x += direction_x
         y += direction_y  
-
-        for i in range(barra_len):
-            stdscr.addch(barra2_y + i, barra2_x, '|', curses.color_pair(1))
-            stdscr.addch(barra1_y + i, barra1_x, 'X', curses.color_pair(2))
 
         
 
 
         time.sleep(0.1)
 
-        if y in (max_y - len("o"), 0): 
-            direction_y = -direction_y # reverse
-        # left and right
-        if x in (max_x - len("o"), 0): 
-            direction_x = -direction_x # reverse
+        
+        stdscr.clear()      
+        stdscr.addch(y,x,"o")
+        for i in range(barra_len):
+            stdscr.addch(barra2_y + i, barra2_x, '|', curses.color_pair(1))
+            stdscr.addch(barra1_y + i, barra1_x, 'X', curses.color_pair(2))
+        stdscr.addstr(1, 0, mensaje, curses.color_pair(3))
 
-        stdscr.addstr(y,x,"o")
         stdscr.refresh()
-
-        key = stdscr.getch()
-        if key == ord('q'):
-            break
-        elif key == curses.KEY_DOWN and barra2_y < max_y - barra_len - 1:
-            barra2_y += 1
-        elif key == curses.KEY_UP and barra2_y > 1:
-            barra2_y -= 1
-        if key == ord('s') and barra1_y < max_y - barra_len - 1:
-            barra1_y += 1
-        elif key == ord('w') and barra1_y > 1:
-            barra1_y -= 1
 
     curses.endwin()
 
