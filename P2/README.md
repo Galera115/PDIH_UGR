@@ -85,7 +85,7 @@ Básicamente dibujamos en una posición x para cada jugador y luego dibujamos N 
 
 Crearemos un string para informar de los goles de cada jugador a lo largo del partido para conseguir darles información. Aparte de esto para que quede más estético se ha añadido una línea media entre ambas zonas (de forma similar a como se crean los jugadores de cada equipo) y un recuadro para señalar la zona de juego, ahora mismo esto quedaría así:
 
-[!image](img/pelotita_menu.png)
+![image](img/pelotita_menu.png)
 
 Se puede ver todo lo comentado anteriormente, el marcador, las líneas que delimitan el campo y a los jugadores cada uno de distinto color.
 
