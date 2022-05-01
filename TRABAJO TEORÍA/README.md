@@ -75,4 +75,52 @@ Aparte otras soluciones como segmentación. O algunas de las más recientes como
 
 Un uso que podemos darle es el de poder entrenar un modelo en un dataset específico como puede ser las salidas en 100 metros lisos para luego obtener los pesos del entrenamiento y usarlos en una app de Android para que pueda ser utilizada por cualquiera y con un móvil pueda ver si ha realizado o no una buena salida.
 
+![dance](img/pose_tracking_example.gif)
+
 ## Uso de MediaPipe
+
+Antes de nada deberemos leer ya sea un vídeo o una imagen, en mi caso con los notebooks he utilizado la librería de google para colab "files" ya que podremos hacer una llamada a `upload()` y nos abrirá una ventana donde subrir nuestros ficheros.
+
+Una vez estén subidos los ficheros a procesar podremos deberemos procesarlos:
++ Si son imágenes utilizaremos `imread()` de openCV que nos devolverá la imagen codificada para su uso.
++ Si son vídeos utilizaremos `VideoCapture()` de openCV que nos devolverá el vídeo codificado para su uso y que con la función `read()` nos devolverá un frame del vídeo.
+
+En ambos casos después de esto se inicializa la clase PoseDetector de MediaPipe, los valores que podremos pasarle a esta inicialización de la clase serán:
++ `static_image_mode` Para indicar si la entrada será estática(imagen, True) o no(vídeo, False).
++ `model_complexity` Para indicar la complejidad del modelo, toma un valor entre 0,1 y 2, cuanto mayor sea esta, mayor precisión tendrá el modelo pero será más lento.
++ `smooth_landmarks` para obtener mejores puntos de referencia, si lo ponemos a True.
++ `enable_segmentation` Si pasamos el argumento como True nos dará una máscara de la persona.
++ `smooth_segmentation` Si lo ponemos como True obtendrá resultados más suaves para segmentación.
++ `min_detection_confidence` Confianza mínima del modelo para detectar a una persona, toma valores entre 0.0 y 1.0, cuanto mayor sea mejores puntos tendrá pero más le costará obtenerlos.
++ `min_tracking_confidence` Una vez obtenidos los landmark(puntos de referencia) esta confianza será la mínima para considerar que se están siguiendo en caso de que la entrada fuera un vídeo.
+
+
+Luego tras hacer tener la imagen o frame del vídeo se lo pasamos como argumento a `findPose()` y si llamamos a `getPosition()` obtendremos las coordenadas de los puntos de referencia en 3 dimensiones.
+
+En el caso del vídeo quedaría el código así:
+![code](img/carbon.png)
+
+Y en el de la imagen:
+![code](img/carbon2.png)
+
+Y también podremos obtener una representación de los puntos en 3 dimensiones con:
+![code](img/carbon3.png)
+
+## Resultados
+En el caso de las imágenes obtendremos las siguientes una vez ejecutemos el código:
+
+![result](img/huge.png)
+
+Y la representación de puntos:
+
+![result](img/plot.png)
+
+Para el vídeo esto será algo más complejo si no comentamos la línea de cv2_imshow del bucle while podremos ver cada uno de los frames, pero podemos guardar todas estas imágenes para luego obtener un vídeo donde las unamos, con el siguiente trozo de código:
+![code](img/carbon4.png)
+
+Dando el siguiente resultado:
+
+![result](img/dance.gif)
+
+U otro ejemplo como este:
+
