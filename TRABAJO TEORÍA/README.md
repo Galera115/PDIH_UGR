@@ -135,3 +135,9 @@ U otro ejemplo como este, aquí al haber más gente le hemos bajado las confianz
 Como hemos podido ver esta herramienta es bastante poderosa y lo mejor de ello es que con la complejidad a default del modelo es sorprendentemente rápida para los buenos resultados que obtiene. Los resultados obviamente podrían ser mejorados con más poder computacional, tiempo y complejidad del modelo, pero estamos hablando de que estos modelos pueden sacar sus pesos para ser utilizados en un dispositivo móvil a tiempo real. 
 
 Se podrían mejorar los modelos o ser entrenados en imagen específicas para obtener mejores resultados y aplicarse a numerosos campos, como pueden ser la monitorización de atletas de élite o en otro campos como vigilancia.
+
+Un ejemplo aplicado a atletismo que ha sido conseguido en algo menos de un minuto con la CPU que nos ofrece Colaboratory:
+
+![atletismo](img/run.gif)
+
+Aquí podemos ver que el modelo tiene aún espacio de mejora como detectar a todos los corredores y mejorar la precisión para que no vaya saltando entre un corredor y otro, pero vemos que los resultados son muy buenos para la poca potencia y tiempo dedicados.
