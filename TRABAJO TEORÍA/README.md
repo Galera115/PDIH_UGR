@@ -141,3 +141,12 @@ Un ejemplo aplicado a atletismo que ha sido conseguido en algo menos de un minut
 ![atletismo](img/run.gif)
 
 Aquí podemos ver que el modelo tiene aún espacio de mejora como detectar a todos los corredores y mejorar la precisión para que no vaya saltando entre un corredor y otro, pero vemos que los resultados son muy buenos para la poca potencia y tiempo dedicados.
+
+## Referencias
+https://google.github.io/mediapipe/
+
+https://opencv.org/
+
+https://theailearner.com/2018/10/15/creating-video-from-images-using-opencv-python/
+
+https://github.com/BakingBrains/Pose_estimation
