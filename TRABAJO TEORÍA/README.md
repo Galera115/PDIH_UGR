@@ -8,6 +8,10 @@
 1. [Introducción](#introducción)
 2. [Instalación](#instalación)
 3. [OpenCV](#opencv)
+4. [MediaPipe](#mediapipe)
+5. [Uso de MediaPipe](#uso-de-mediapipe)
+6. [Resultados](#resultados)
+7. [Conclusión](#conclusiones)
    
 ## Introducción
 
@@ -122,5 +126,12 @@ Dando el siguiente resultado:
 
 ![result](img/dance.gif)
 
-U otro ejemplo como este:
+U otro ejemplo como este, aquí al haber más gente le hemos bajado las confianzas para que el modelo no se volviera loco:
 
+![result](img/dance2.gif)
+
+## Conclusiones
+
+Como hemos podido ver esta herramienta es bastante poderosa y lo mejor de ello es que con la complejidad a default del modelo es sorprendentemente rápida para los buenos resultados que obtiene. Los resultados obviamente podrían ser mejorados con más poder computacional, tiempo y complejidad del modelo, pero estamos hablando de que estos modelos pueden sacar sus pesos para ser utilizados en un dispositivo móvil a tiempo real. 
+
+Se podrían mejorar los modelos o ser entrenados en imagen específicas para obtener mejores resultados y aplicarse a numerosos campos, como pueden ser la monitorización de atletas de élite o en otro campos como vigilancia.
