@@ -9,8 +9,8 @@
 2. [Instalación](#instalación)
 3. [Arduino](#arduino)
 4. [Led Básico](#led-básico)
-5. [Semáforo](#uso-de-mediapipe)
-6. [Semáforo con botón](#resultados)
+5. [Semáforo](#semáforo)
+6. [Semáforo con botón](#semáforo-botón)
 7. [El Coche Fantástico](#conclusiones)
 8. [Pantalla LCD]()
 
@@ -45,7 +45,23 @@ Tenemos:
 Con estos componentes y código podremos crear numerosos proyectos que se muestran a continuación
 
 ## Led Básico
+El circuito a realizar sería el siguiente:
+![circuito](img/circuitLED.PNG)
+
+Necesitaremos el LED, un par de cables y una resistencia de al menos 220 $\Omega$. Con el siguiente código podremos hacer que el LED se ilumine durante 1 segundo de forma intermitente.
+
+![led](img/led.png)
 
 ## Semáforo
 En este proyecto conectaremos tres LEDs de los siguientes colores: rojo, amarillo y verde. Estos LEDs tendrán que estar conectados a una resistencia y a tierra(GND). La idea es simular el funcionamiento de un semáforo para ello se iluminarán los LEDs de forma alternativa. El código para este funcionamiento es el siguiente:
+
+![code](img/semaforo.png)
+
+El esquema será similar al ejemplo anterior solo que ahora necesitaremos el mismo pero replicado otras dos veces, en las variables RED tendremos el pin conectado al led rojo, en GREEN al verde, etc. Y en delay el tiempo entre cada cambio de luces.
+
+Y finalmente tanto una imagen del montaje como un vídeo el proyecto en funcionamiento:
+![img](img/semaforo.jpg)
+
+
+## Semáforo botón
 
