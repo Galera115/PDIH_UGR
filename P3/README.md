@@ -63,5 +63,21 @@ Y finalmente tanto una imagen del montaje como un vídeo el proyecto en funciona
 ![img](img/semaforo.jpg)
 
 
+https://user-images.githubusercontent.com/57501973/167163986-806c8f18-4a2f-4daf-b92b-784f186e6d80.mp4
+
+
+
 ## Semáforo botón
+
+
+
+
+https://user-images.githubusercontent.com/57501973/167164276-2a64325d-9a9d-49d1-b297-bbbbcd9233b7.mp4
+
+
+
+
+
+https://user-images.githubusercontent.com/57501973/167164619-bc806e13-98b3-4dfb-a90e-152694038ebc.mp4
+
 
