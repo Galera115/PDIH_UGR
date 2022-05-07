@@ -31,12 +31,6 @@ void loop()
     estadoMemoria = 0;
   }
   delay(DELAY_RED);
-  //red_light();
-  //delay(DELAY_RED);
-  //yellow_light();
-  //delay(DELAY_YELLOW);
-  //green_light();
-  //delay(DELAY_GREEN);
 }
 
 void no_red(){

@@ -5,14 +5,18 @@
 **Contacto: agalera13@correo.ugr.es ó @galera115 en GitHub**
 
 # Índice
-1. [Introducción](#introducción)
-2. [Instalación](#instalación)
-3. [Arduino](#arduino)
-4. [Led Básico](#led-básico)
-5. [Semáforo](#semáforo)
-6. [Semáforo con botón](#semáforo-botón)
-7. [El Coche Fantástico](#conclusiones)
-8. [Pantalla LCD]()
+- [Práctica 3. Experimentación con Arduino](#práctica-3-experimentación-con-arduino)
+  - [Grado en Ingeniería Informática. Prácticas para la asignatura Periféricos y Dispositivos de Interfaz Humana](#grado-en-ingeniería-informática-prácticas-para-la-asignatura-periféricos-y-dispositivos-de-interfaz-humana)
+- [Índice](#índice)
+  - [Introducción](#introducción)
+  - [Instalación](#instalación)
+  - [Arduino](#arduino)
+  - [Led Básico](#led-básico)
+  - [Semáforo](#semáforo)
+  - [Semáforo botón](#semáforo-botón)
+  - [Coche fantástico](#coche-fantástico)
+  - [LCD](#lcd)
+  - [Multithreading](#multithreading)
 
 ## Introducción
 Arduino es una compañía que se dedica a la producción de software y hardware libres, su principal producto son las placas de microcontoladores, aunque al ser libres ellos las diseñan para que cualquier persona o empresa sea capaz de fabricar las placas de Arduino. Detrás de la compañía se encuentra una gran comunidad de desarrolladores que crean numerosas aplicaciones con estas placas ya que las posibilidades que ofrecen son casi infinitas. Tendremos tantas posibilidades ya que si bien las placas y el lenguaje de programación que utilizan son bastante sencillos, poseen una larga lista de complementos para utilizar con las placas.
@@ -69,15 +73,42 @@ https://user-images.githubusercontent.com/57501973/167163986-806c8f18-4a2f-4daf-
 
 ## Semáforo botón
 
+En el código habrá que añadir un condicional para checkear cuando pulsemos el botón para cambiar del modo normal al modo con la luz roja fija:
 
+![code](img/semaforo_boton.png)
 
+El esquema será algo similar pero tendremos que añadir el botón, el esquema quedaría así:
+
+Y finalmente un vídeo del funcionamiento del proyecto:
+
+## Coche fantástico
+
+Para el esquema necesitaremos replicar el parpadeo de un LED pero por seis LEDS, para el código tendremos una serie de bucles que irán encendiendo y apagando los LEDs de forma alterna:
+
+El código para esto sería el siguiente, tendremos un array con los pines donde conectamos los LEDs:
+
+![code](img/knight_rider.png)
+
+El esquema como hemos dicho será similar al de un LED pero replicado seis veces:
+
+Un vídeo del código funcionando:
 
 https://user-images.githubusercontent.com/57501973/167164276-2a64325d-9a9d-49d1-b297-bbbbcd9233b7.mp4
 
 
+## LCD
 
+Hemos seguido el siguiente ejemplo para hacer un [Hello World](https://docs.arduino.cc/learn/electronics/lcd-displays) con la pantalla LCD, para el esquema se ha seguido el que aparece en el enlace:
 
+![schem](img/LCD_Base_bb_Fritz.png)
+
+Y con el código el mismo de la página web, para utilizarlo hemos necesitado la librería LiquidCristal.h:
+
+![code](img/lcd.png)
+
+Y un vídeo para ver su funcionamiento:
 
 https://user-images.githubusercontent.com/57501973/167164619-bc806e13-98b3-4dfb-a90e-152694038ebc.mp4
 
 
+## Multithreading
