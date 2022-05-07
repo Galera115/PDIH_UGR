@@ -112,3 +112,11 @@ https://user-images.githubusercontent.com/57501973/167164619-bc806e13-98b3-4dfb-
 
 
 ## Multithreading
+
+Una vez tengamos el ejemplo del LCD añadiremos un LED y aplicaremos Protothreading, obtenido del siguiente [ejemplo](https://create.arduino.cc/projecthub/reanimationxp/how-to-multithread-an-arduino-protothreading-tutorial-dd2c37?ref=tag&ref_id=arduino&offset=7), en este ejemplo iremos actualizando el mensaje de la pantalla LCD y encenderemos un LED sin tener que alternan entre ambos dispositivos. Para el esquema nos hemos basado en el mismo del anterior pero añadiendo un LED. El código para ello se necesita la biblioteca TimedAction y lo ejecutaremos con el código presente en la carpeta proto. Es importante para que funcione cambiar el include tras importar la biblioteca como se especifica en el código.
+
+Y el siguiente funcionamiento en vídeo:
+
+
+
+
