@@ -5,18 +5,15 @@
 **Contacto: agalera13@correo.ugr.es ó @galera115 en GitHub**
 
 # Índice
-- [Práctica 3. Experimentación con Arduino](#práctica-3-experimentación-con-arduino)
-  - [Grado en Ingeniería Informática. Prácticas para la asignatura Periféricos y Dispositivos de Interfaz Humana](#grado-en-ingeniería-informática-prácticas-para-la-asignatura-periféricos-y-dispositivos-de-interfaz-humana)
-- [Índice](#índice)
-  - [Introducción](#introducción)
-  - [Instalación](#instalación)
-  - [Arduino](#arduino)
-  - [Led Básico](#led-básico)
-  - [Semáforo](#semáforo)
-  - [Semáforo botón](#semáforo-botón)
-  - [Coche fantástico](#coche-fantástico)
-  - [LCD](#lcd)
-  - [Multithreading](#multithreading)
+- [Introducción](#introducción)
+- [Instalación](#instalación)
+- [Arduino](#arduino)
+- [Led Básico](#led-básico)
+- [Semáforo](#semáforo)
+- [Semáforo botón](#semáforo-botón)
+- [Coche fantástico](#coche-fantástico)
+- [LCD](#lcd)
+- [Multithreading](#multithreading)
 
 ## Introducción
 Arduino es una compañía que se dedica a la producción de software y hardware libres, su principal producto son las placas de microcontoladores, aunque al ser libres ellos las diseñan para que cualquier persona o empresa sea capaz de fabricar las placas de Arduino. Detrás de la compañía se encuentra una gran comunidad de desarrolladores que crean numerosas aplicaciones con estas placas ya que las posibilidades que ofrecen son casi infinitas. Tendremos tantas posibilidades ya que si bien las placas y el lenguaje de programación que utilizan son bastante sencillos, poseen una larga lista de complementos para utilizar con las placas.
@@ -118,5 +115,9 @@ Una vez tengamos el ejemplo del LCD añadiremos un LED y aplicaremos Protothread
 Y el siguiente funcionamiento en vídeo:
 
 
+
+
+
+https://user-images.githubusercontent.com/57501973/167250326-56c03051-30e1-4a50-959e-5473ba6f3ab4.mp4
 
 
