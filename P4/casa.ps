@@ -1,0 +1,84 @@
+%!PS
+
+% Primero dibujaremos el cuadrado que representa la casa
+% Marcamos un gris algo claro y nos vamos más o menos al centro de la página en la base
+newpath
+
+250 0 moveto
+
+0.4 setgray
+130 0 rlineto
+0 100 rlineto
+-130 0 rlineto
+0.7 setgray
+fill
+closepath
+5 setlinewidth
+stroke
+
+% Una vez dibujado lo principal de la casa dibujamos un teclado del mismo color y grosor
+% para el tejado
+newpath
+
+210 100 moveto
+210 0 rlineto
+-105 75 rlineto
+0.7 setgray
+5 setlinewidth
+fill
+closepath
+stroke
+
+% Ahora dibujaremos ambas ventanas una a cada lado con las mismas dimensiones y de un color
+% algo más oscuro para que resalten más, primero la puerta
+
+
+newpath
+
+300 0 moveto
+
+30 0 rlineto
+0 50 rlineto
+-30 0 rlineto
+
+closepath
+5 setlinewidth
+0.5 setgray
+fill
+stroke
+
+% Y luego las ventanas
+
+newpath
+
+335 60 moveto
+
+30 0 rlineto
+0 20 rlineto
+-30 0 rlineto
+closepath
+5 setlinewidth
+0.5 setgray
+fill
+stroke
+
+newpath
+
+265 60 moveto
+
+30 0 rlineto
+0 20 rlineto
+-30 0 rlineto
+
+closepath
+5 setlinewidth
+0.5 setgray
+fill
+stroke
+
+
+showpage
+
+
+
+
