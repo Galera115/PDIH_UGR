@@ -12,6 +12,7 @@
 5. [Uso de MediaPipe](#uso-de-mediapipe)
 6. [Resultados](#resultados)
 7. [Conclusión](#conclusiones)
+8. [Presentación](#presentación)
    
 ## Introducción
 
@@ -141,6 +142,10 @@ Un ejemplo aplicado a atletismo que ha sido conseguido en algo menos de un minut
 ![atletismo](img/run.gif)
 
 Aquí podemos ver que el modelo tiene aún espacio de mejora como detectar a todos los corredores y mejorar la precisión para que no vaya saltando entre un corredor y otro, pero vemos que los resultados son muy buenos para la poca potencia y tiempo dedicados.
+
+## Presentación
+
+La presentación ha sido realizada con Canvas, el enlace para su visualización es el siguiente: https://www.canva.com/design/DAFBoekfsO0/AKeyFzpglBBBzrjaw7mAFg/view?utm_content=DAFBoekfsO0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
 ## Referencias
 https://google.github.io/mediapipe/
