@@ -1,21 +1,21 @@
-# Práctica 5. Experimentación  con  el  sistema  de salida de sonido
+<!-- omit in toc -->
+# Práctica 5. Experimentación  con  el  sistema  de salida de sonido {.unlisted .unnumbered}
+<!-- omit in toc -->
 ## Grado en Ingeniería Informática. Prácticas para la asignatura Periféricos y Dispositivos de Interfaz Humana
 
 **Autor: Antonio Galera Gázquez**
 **Contacto: agalera13@correo.ugr.es ó @galera115 en GitHub**
 
+<!-- omit in toc -->
 # Índice
-- [Práctica 5. Experimentación  con  el  sistema  de salida de sonido](#práctica-5-experimentación--con--el--sistema--de-salida-de-sonido)
-  - [Grado en Ingeniería Informática. Prácticas para la asignatura Periféricos y Dispositivos de Interfaz Humana](#grado-en-ingeniería-informática-prácticas-para-la-asignatura-periféricos-y-dispositivos-de-interfaz-humana)
-- [Índice](#índice)
-  - [Introducción](#introducción)
-  - [Lectura](#lectura)
-  - [Visualización de datos](#visualización-de-datos)
-  - [Guardado](#guardado)
-  - [Obtener cabeceras](#obtener-cabeceras)
-  - [Unir audios](#unir-audios)
-  - [Filtro](#filtro)
-  - [Eco al revés](#eco-al-revés)
+- [Introducción](#introducción)
+- [Lectura](#lectura)
+- [Visualización de datos](#visualización-de-datos)
+- [Guardado](#guardado)
+- [Obtener cabeceras](#obtener-cabeceras)
+- [Unir audios](#unir-audios)
+- [Filtro](#filtro)
+- [Eco al revés](#eco-al-revés)
 
 ## Introducción
 
@@ -82,7 +82,7 @@ La onda sin filtrar es esta:
 ![wave](./img/wave_j.jpg)
 
 
-Y filtrada la siguiente, el filtrado se le pasó 1000 y 2000 porque sino el audio resultante se escuchaba con muy poca amplitud:
+Y filtrada la siguiente, el filtrado se le pasó 1000 y 2000 porque sino el audio resultante se escuchaba con muy poca amplitud y muchas veces daba error el método de Scipy:
 
 ![wave](./img/wave_f.jpg)
 
@@ -90,3 +90,26 @@ Podemos ver como la amplitud es menor y si escuchamos ambos el filtrado se escuc
 
 ## Eco al revés
 
+Para el eco debemos sumar la amplitud de un momento pasado al momento actual esto multiplicado por un porcentaje, cuanto mayor sea este porcentaje más se mantendrá el sonido actual, y cuanto menor más se acentuará el eco de lo que ha sonado antes. Se ha hecho un plot de distintos valores de beta(este es el porcentaje del que hablamos).
+
+Luego nos quedamos con el resultado de aplicarle un 0.5, y este será el que le demos la vuelta, esto se puede hacer con el método flip de Numpy. Una vez tengamos ambas transformaciones aplicadas, mostramos la gráfica y guardamos el audio.
+
+El código será algo similar a esto:
+
+![code](./img/code.png)
+
+La onda al darle eco 0.1:
+
+![img](./img/wave_01.jpg)
+
+La onda al darle eco 0.8:
+
+![img](./img/wave_08.jpg)
+
+La onda al darle eco 0.5:
+
+![img](./img/wave_e.jpg)
+
+La onda con eco al darle la vuelta:
+
+![img](./img/wave_er.jpg)
