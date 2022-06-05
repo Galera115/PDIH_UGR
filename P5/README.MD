@@ -33,11 +33,14 @@ Quedando así los import de las funciones:
 
 ![import](./img/import.png)
 
+También comentar que pinchando el Enlace a Colaboratory en la parte superior del Notebook podremos ejecutar el código para escuchar como suenan los audios.
+
 ## Lectura
 
 Se utilizará la función read de Scipy para leer los ficheros wav, pero previamente se creará un audio mp3 con GTTS y lo convertiremos a WAV mediante Pydub, para realizar esto serán necesarias las siguientes líneas de código. Esto se ha decidido hacer así porque se realizó en colab y gracias a esto no tenemos que estar dando permiso a la API de Drive cada vez que queramos leer un audio, los generamos automáticamente. Aparte que así no tenemos el problema de que para ejecutarlo tengamos que tener los ficheros, los genera el cuaderno de por sí.
 
 ![lectura](./img/lectura.png)
+
 
 ## Visualización de datos
 
